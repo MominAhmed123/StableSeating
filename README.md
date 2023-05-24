@@ -1,2 +1,6 @@
-# StableSeating
-This program stably seats 4n people in 4 x n seating. Stability is defined the same way as it is defined in the stable marriage problem (if person a is sitting next to person b, person b is the best possible neighbour to person a and vice versa)
+#StableSeating
+First of all, this code is terribly programmed, barely commented and the architecture is just bad - and I am too lazy to change it. But, it works :)
+The task is to seat 4n people in 4 x n in the best possible manner efficiently. Trying to get the best total sum of preference numbers is too time taking so instead I try to seat them stably in O(n^2). A pair x and y are stable if for x there doesn't exist another z who likes x more than y and z also likes x more than it's current partner (Therefore, x and z would rather sit with each other). In this context, your neighbours should be stable in the same manner.
+For this program, half the people must decide to sit in the 2 middle seats, and the other half in the 2 corner seats (in this version of the program the first half is automatically assigned middle seat). Next they must click the names in order of their preferences.
+The program works by first matching each person sitting in the center with a corner person through Gale-shapely algorithm. This matching always exists since it is a bipartide graph. I call this a partially stable seating (because every person is at least stably seated with one of it's neighbours). 
+Then the program attempts to match these pairs (to produce a row of 4) using Irving's algorithm. Since this is a complete graph, this fully stable seating may or may not exist.
